@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('shares', 'ShareController');
+Route::resource('faculties','FacultyController');
+Route::resource('departments','DepartmentController');
+

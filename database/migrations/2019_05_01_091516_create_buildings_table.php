@@ -14,7 +14,7 @@ class CreateBuildingsTable extends Migration
     public function up()
     {
         Schema::create('buildings', function (Blueprint $table) {
-            $table->bigIncrements('Building_ID');
+            $table->bigIncrements('id');
             $table->string('Building_Name', 20);
             $table->bigInteger('Total_Rooms');
             $table->timestamps();
