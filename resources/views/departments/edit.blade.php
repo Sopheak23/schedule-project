@@ -25,7 +25,7 @@
         @csrf
         <div class="form-group">
           <label for="name">Department Name:</label>
-          <input type="text" class="form-control" name="department_name" value={{ $department->Department_Name }} />
+          <input type="text" class="form-control" name="department_name" value={{ $department->department_name }} />
         </div>
         
         <button type="submit" class="btn btn-primary">Update</button>

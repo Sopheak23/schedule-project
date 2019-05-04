@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Faculty;
+use App\Room;
 
-class FacultyController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all(); 
-        return view('faculties.index', compact('faculties'));
+        $rooms = Room::all();
+        return view('rooms.index', compact('rooms'));
     }
 
     /**
@@ -23,9 +23,9 @@ class FacultyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('faculties.create');
+        return view('rooms.create',['building_id' => $id]);
     }
 
     /**
@@ -37,13 +37,19 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'faculty_name'=>'required'
+            'room_name'=>'required',
+            'total_students'=>'required'
         ]);
-        $faculty = new Faculty([
-            'faculty_name'=>$request->get('faculty_name')
+
+        $room = new Room([
+            'room_name'=>$request->get('room_name'),
+            'total_students'=>$request->get('total_students'),
+            'building_id' => $request->get('building_id')
         ]);
-        $faculty->save();
-        return redirect('/faculties')->with('success', 'Faculty has been added');
+
+        $room->save();
+        $building_id = $room->building_id;
+        return redirect('/buildings/'.$building_id )->with('success', 'Room has been added');
     }
 
     /**
@@ -54,9 +60,7 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculties = Faculty::find($id);
-        $departments = $faculties->departments;
-        return view('faculties.show', compact('faculties','departments'));
+        //
     }
 
     /**
@@ -67,8 +71,8 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        $faculty = Faculty::find($id);
-        return view('faculties.edit', compact('faculty'));
+        $room = Room::find($id);
+        return view('rooms.edit', compact('room'));
     }
 
     /**
@@ -81,14 +85,16 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'faculty_name'=>'required'
+            'room_name'=>'required',
+            'total_students'=>'required'
         ]);
+        $room = Room::find($id);
+        $room->room_name = $request->get('room_name');
+        $room->total_students = $request->get('total_students');        
+        $room->save();
 
-        $faculty = Faculty::find($id);
-        $faculty->faculty_name = $request->get('faculty_name');
-        $faculty->save();
-        return redirect('/faculties')->with('success', 'Faculty has been updated');
-
+        $building_id = $room->building_id;
+        return redirect('/buildings/'. $building_id)->with('success', 'Room has been updated');
     }
 
     /**
@@ -99,8 +105,9 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $faculty = Faculty::find($id);
-        $faculty->delete();
-        return redirect('/faculties')->with('success', 'Faculty has been deleted Successfully');
+        $room = Room::find($id);
+        $building_id = $room->building_id;
+        $room->delete();
+        return redirect('/buildings/'. $building_id)->with('success', 'Room has been deleted Successfully');
     }
 }

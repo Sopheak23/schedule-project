@@ -20,14 +20,15 @@
         <tr>
           <td>ID</td>
           <td>Faculty Name</td>
-          <td colspan="3">Action</td>
+          <td colspan="3">Actions</td>
+          </div>
         </tr>
     </thead>
     <tbody>
         @foreach($faculties as $faculty)
         <tr>
             <td>{{$faculty->id}}</td>
-            <td>{{$faculty->Faculty_Name}}</td>
+            <td>{{$faculty->faculty_name}}</td>
             <td><a href="{{ route('faculties.edit',$faculty->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('faculties.destroy', $faculty->id)}}" method="post">

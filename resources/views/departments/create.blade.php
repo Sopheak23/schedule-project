@@ -24,6 +24,7 @@
           <div class="form-group">
               @csrf
               <label for="name">Department Name:</label>
+              <input type="hidden" name="faculty_id" value={{$faculty_id}}>
               <input type="text" class="form-control" name="department_name"/>
           </div>
           

@@ -15,7 +15,7 @@ class CreateProfessorTimesTable extends Migration
     {
         Schema::create('professor_times', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('Teaching_Time');
+            $table->dateTime('teaching_time');
             $table->timestamps();
         });
     }

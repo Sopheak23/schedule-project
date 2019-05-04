@@ -24,9 +24,9 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('departments.create');
+    public function create($id)
+    {  
+        return view('departments.create',['faculty_id' => $id]);
     }
 
     /**
@@ -40,11 +40,15 @@ class DepartmentController extends Controller
         $request->validate([
             'department_name'=>'required'
         ]);
+
         $department = new Department([
-            'department_name'=>$request->get('Department_Name')
+            'department_name'=>$request->get('department_name'),
+            'faculty_id' => $request->get('faculty_id')
         ]);
+
         $department->save();
-        return redirect('/departments')->with('success', 'Department has been added');
+        $faculty_id = $department->faculty_id;
+        return redirect('/faculties/'.$faculty_id )->with('success', 'Department has been added');
     }
 
     /**
@@ -79,7 +83,15 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'department_name'=>'required'
+        ]);
+        $department = Department::find($id);
+        $department->department_name = $request->get('department_name');
+        $department->save();
+
+        $faculty_id = $department->faculty_id;
+        return redirect('/faculties/'. $faculty_id)->with('success', 'Department has been updated');
     }
 
     /**
@@ -90,6 +102,9 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department = Department::find($id);
+        $faculty_id = $department->faculty_id;
+        $department->delete();
+        return redirect('/faculties/'. $faculty_id)->with('success', 'Department has been deleted Successfully');
     }
 }

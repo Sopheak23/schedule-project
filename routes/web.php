@@ -18,4 +18,8 @@ Route::get('/', function () {
 Route::resource('shares', 'ShareController');
 Route::resource('faculties','FacultyController');
 Route::resource('departments','DepartmentController');
+Route::get('departments/create/{id}','DepartmentController@create');
+Route::resource('buildings','BuildingController');
+Route::resource('rooms','RoomController');
+Route::get('rooms/create/{id}','RoomController@create');
 

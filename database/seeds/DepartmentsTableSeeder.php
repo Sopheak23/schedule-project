@@ -12,111 +12,111 @@ class DepartmentsTableSeeder extends Seeder
     public function run()
     {
         \App\Department::insert([
-            'Department_Name'=>'Biology',
+            'department_name'=>'Biology',
             'faculty_id'=>1
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Chemistry',
+            'department_name'=>'Chemistry',
             'faculty_id'=>1
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Computer Science',
+            'department_name'=>'Computer Science',
             'faculty_id'=>1
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Environmental Science',
+            'department_name'=>'Environmental Science',
             'faculty_id'=>1
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Mathematics',
+            'department_name'=>'Mathematics',
             'faculty_id'=>1
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Physics',
+            'department_name'=>'Physics',
             'faculty_id'=>1
         ]);
 
         \App\Department::insert([
-            'Department_Name'=>'Geography',
+            'department_name'=>'Geography',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'History',
+            'department_name'=>'History',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Khmer Literature',
+            'department_name'=>'Khmer Literature',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Linguistics',
+            'department_name'=>'Linguistics',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Media and Communication',
+            'department_name'=>'Media and Communication',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Philosophy',
+            'department_name'=>'Philosophy',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Psychology',
+            'department_name'=>'Psychology',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Sociology',
+            'department_name'=>'Sociology',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Social Work',
+            'department_name'=>'Social Work',
             'faculty_id'=>2
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Tourism',
+            'department_name'=>'Tourism',
             'faculty_id'=>2
         ]);
 
         \App\Department::insert([
-            'Department_Name'=>'Information Technology Engineering',
+            'department_name'=>'Information Technology Engineering',
             'faculty_id'=>3
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Telecommunication and Electronic Engineering',
+            'department_name'=>'Telecommunication and Electronic Engineering',
             'faculty_id'=>3
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Bioengineering',
+            'department_name'=>'Bioengineering',
             'faculty_id'=>3
         ]);
 
         \App\Department::insert([
-            'Department_Name'=>'Community Development',
+            'department_name'=>'Community Development',
             'faculty_id'=>4
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Economic Development',
+            'department_name'=>'Economic Development',
             'faculty_id'=>4
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Natural Resource Management and Development',
+            'department_name'=>'Natural Resource Management and Development',
             'faculty_id'=>4
         ]);
 
         \App\Department::insert([
-            'Department_Name'=>'Educational Studies',
+            'department_name'=>'Educational Studies',
             'faculty_id'=>5
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Higher Education Development and Management',
+            'department_name'=>'Higher Education Development and Management',
             'faculty_id'=>5
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Lifelong Learning',
+            'department_name'=>'Lifelong Learning',
             'faculty_id'=>5
         ]);
         \App\Department::insert([
-            'Department_Name'=>'Center for Educational Research and Training',
+            'department_name'=>'Center for Educational Research and Training',
             'faculty_id'=>5
         ]);
     }

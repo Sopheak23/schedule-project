@@ -85,9 +85,9 @@ class ShareController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-        'share_name'=>'required',
-        'share_price'=> 'required|integer',
-        'share_qty' => 'required|integer'
+            'share_name'=>'required',
+            'share_price'=> 'required|integer',
+            'share_qty' => 'required|integer'
         ]);
 
         $share = Share::find($id);

@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Edit Faculty
+    Edit Room
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -20,12 +20,14 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('faculties.update', $faculty->id) }}">
+      <form method="post" action="{{ route('rooms.update', $room->id) }}">
         @method('PATCH')
         @csrf
         <div class="form-group">
-          <label for="name">Faculty Name:</label>
-          <input type="text" class="form-control" name="faculty_name" value={{ $faculty->faculty_name }} />
+          <label for="name">Room Name:</label>
+          <input type="text" class="form-control" name="room_name" value={{ $room->room_name }} />
+          <label for="name">Total Students:</label>
+          <input type="text" class="form-control" name="total_students" value={{ $room->total_students }} />
         </div>
         
         <button type="submit" class="btn btn-primary">Update</button>

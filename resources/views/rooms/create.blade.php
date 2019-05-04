@@ -8,7 +8,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    Add Faculty
+    Add Room
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -20,12 +20,16 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('faculties.store') }}">
+      <form method="post" action="{{ route('rooms.store') }}">
           <div class="form-group">
               @csrf
-              <label for="name">Faculty Name:</label>
-              <input type="text" class="form-control" name="faculty_name"/>
+              <label for="name">Room Name:</label>
+              <input type="text" class="form-control" name="room_name"/>
+              <label for="name">Total Students:</label>
+              <input type="text" class="form-control" name="total_students"/>
+              <input type="hidden" name="building_id" value={{$building_id}}>
           </div>
+          
           <button type="submit" class="btn btn-primary">Add</button>
       </form>
   </div>

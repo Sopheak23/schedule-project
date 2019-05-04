@@ -13,24 +13,24 @@
     </div><br />
   @endif
   <div class="card-header">
-    {{$faculties->Faculty_Name}}
+    {{$faculties->faculty_name}}
   </div>
   <div class="card-body">
-    <a href="{{ route('departments.create')}}" class="btn btn-primary">Add Department</a>
+    <a href="{{ route('departments.create')}}/{{$faculties->id}}" class="btn btn-primary">Add Department</a>
   </div>
   <table class="table table-striped">
     <thead>
         <tr>
           <td>ID</td>
           <td>Department Name</td>
-          <td colspan="2">Action</td>
+          <td colspan="2">Actions</td>
         </tr>
     </thead>
     <tbody>
         @foreach($departments as $department)
         <tr>
             <td>{{$department->id}}</td>
-            <td>{{$department->Department_Name}}</td>
+            <td>{{$department->department_name}}</td>
             <td><a href="{{ route('departments.edit',$department->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
                 <form action="{{ route('departments.destroy', $department->id)}}" method="post">

@@ -13,24 +13,26 @@
     </div><br />
   @endif
   <div>
-    <a href="{{ route('departments.create')}}" class="btn btn-primary">Add Department</a>
+    <a href="{{ route('rooms.create')}}" class="btn btn-primary">Add Room</a>
   </div>
   <table class="table table-striped">
     <thead>
         <tr>
           <td>ID</td>
-          <td>Department Name</td>
+          <td>Room Name</td>
+          <td>Total Student</td>
           <td colspan="2">Actions</td>
         </tr>
     </thead>
     <tbody>
-        @foreach($departments as $department)
+        @foreach($rooms as $room)
         <tr>
-            <td>{{$department->id}}</td>
-            <td>{{$department->department_name}}</td>
-            <td><a href="{{ route('departments.edit',$department->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>{{$room->id}}</td>
+            <td>{{$room->room_name}}</td>
+            <td>{{$room->total_students}}</td>
+            <td><a href="{{ route('rooms.edit',$room->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
-                <form action="{{ route('departments.destroy', $department->id)}}" method="post">
+                <form action="{{ route('rooms.destroy', $room->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
