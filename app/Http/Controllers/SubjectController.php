@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Share;
+use App\Subject;
 
-class ShareController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class ShareController extends Controller
      */
     public function index()
     {
-        $shares = Share::all();
-
-        return view('shares.index', compact('shares'));
+        $subjects = Subject::all(); 
+        return view('subjects.index', compact('subjects'));
     }
 
     /**
@@ -26,7 +25,7 @@ class ShareController extends Controller
      */
     public function create()
     {
-        return view('shares.create');
+        return view('subjects.create');
     }
 
     /**
@@ -38,17 +37,13 @@ class ShareController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'share_name'=>'required',
-            'share_price'=> 'required|integer',
-            'share_qty' => 'required|integer'
+            'subject_name'=>'required'
         ]);
-        $share = new Share([
-            'share_name' => $request->get('share_name'),
-            'share_price'=> $request->get('share_price'),
-            'share_qty'=> $request->get('share_qty')
+        $subject = new Subject([
+            'subject_name'=>$request->get('subject_name')
         ]);
-        $share->save();
-        return redirect('/shares')->with('success', 'Stock has been added');
+        $subject->save();
+        return redirect('/subjects')->with('success', 'Subject has been added');
     }
 
     /**
@@ -70,9 +65,8 @@ class ShareController extends Controller
      */
     public function edit($id)
     {
-        $share = Share::find($id);
-
-        return view('shares.edit', compact('share'));
+        $subject = Subject::find($id);
+        return view('subjects.edit', compact('subject'));
     }
 
     /**
@@ -85,18 +79,13 @@ class ShareController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'share_name'=>'required',
-            'share_price'=> 'required|integer',
-            'share_qty' => 'required|integer'
+            'subject_name'=>'required'
         ]);
 
-        $share = Share::find($id);
-        $share->share_name = $request->get('share_name');
-        $share->share_price = $request->get('share_price');
-        $share->share_qty = $request->get('share_qty');
-        $share->save();
-
-        return redirect('/shares')->with('success', 'Stock has been updated');
+        $subject = Subject::find($id);
+        $subject->subject_name = $request->get('subject_name');
+        $subject->save();
+        return redirect('/subjects')->with('success', 'Subject has been updated');
     }
 
     /**
@@ -107,9 +96,8 @@ class ShareController extends Controller
      */
     public function destroy($id)
     {
-        $share = Share::find($id);
-        $share->delete();
-
-        return redirect('/shares')->with('success', 'Stock has been deleted Successfully');
+        $subject = Subject::find($id);
+        $subject->delete();
+        return redirect('/subjects')->with('success', 'Subject has been deleted Successfully');
     }
 }

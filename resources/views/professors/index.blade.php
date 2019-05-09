@@ -13,30 +13,31 @@
     </div><br />
   @endif
   <div>
-    <a href="{{ route('departments.create')}}" class="btn btn-primary">Add Department</a>
+    <a href="{{ route('professors.create')}}" class="btn btn-primary">Add Professor</a>
   </div>
   <table class="table table-striped">
     <thead>
         <tr>
           <td>ID</td>
-          <td>Department Name</td>
+          <td>Professor Name</td>
           <td colspan="3">Actions</td>
+          </div>
         </tr>
     </thead>
     <tbody>
-        @foreach($departments as $department)
+        @foreach($professors as $professor)
         <tr>
-            <td>{{$department->id}}</td>
-            <td>{{$department->department_name}}</td>
-            <td><a href="{{ route('departments.edit',$department->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>{{$professor->id}}</td>
+            <td>{{$professor->professor_name}}</td>
+            <td><a href="{{ route('professors.edit',$professor->id)}}" class="btn btn-primary">Edit</a></td>
             <td>
-                <form action="{{ route('departments.destroy', $department->id)}}" method="post">
+                <form action="{{ route('professors.destroy', $professor->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
-            <td><a href="{{ route('departments.show',$department->id)}}" class="btn btn-primary">Profs</a></td>
+            <td><a href="{{ route('professors.show',$professor->id)}}" class="btn btn-primary">Depts</a></td>
         </tr>
         @endforeach
     </tbody>

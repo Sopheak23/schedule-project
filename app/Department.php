@@ -11,4 +11,8 @@ class Department extends Model
         'faculty_id'
     ];
 
+    public function professors()
+    {
+        return $this->belongsToMany('App\Professor', 'prof_dept', 'department_id', 'professor_id');
+    }
 }

@@ -11,20 +11,13 @@ class FacultiesTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Faculty::insert([
-            'faculty_name'=>'Faculty of Science'
-        ]);
-        \App\Faculty::insert([
-            'faculty_name'=>'Faculty of Social Science and Humanities'
-        ]);
-        \App\Faculty::insert([
-            'faculty_name'=>'Faculty of Engineering'
-        ]);
-        \App\Faculty::insert([
-            'faculty_name'=>'Faculty of Development Studies'
-        ]);
-        \App\Faculty::insert([
-            'faculty_name'=>'Faculty of Education'
-        ]);
+        \App\Faculty::insert(array(
+            array('faculty_name'=>'Faculty of Science'),
+            array('faculty_name'=>'Faculty of Social Science and Humanities'),
+            array('faculty_name'=>'Faculty of Engineering'),
+            array('faculty_name'=>'Faculty of Development Studies'),
+            array('faculty_name'=>'Faculty of Education')
+        ));
+        
     }
 }

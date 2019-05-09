@@ -22,4 +22,6 @@ Route::get('departments/create/{id}','DepartmentController@create');
 Route::resource('buildings','BuildingController');
 Route::resource('rooms','RoomController');
 Route::get('rooms/create/{id}','RoomController@create');
+Route::resource('subjects','SubjectController');
+Route::resource('professors','ProfessorController');
 

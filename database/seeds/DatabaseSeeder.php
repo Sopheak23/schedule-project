@@ -17,6 +17,10 @@ class DatabaseSeeder extends Seeder
             DepartmentsTableSeeder::class,
             BuildingsTableSeeder::class,
             RoomsTableSeeder::class,
+            ProfessorsTableSeeder::class,
+            DaysTableSeeder::class,
+            TimesTableSeeder::class,
+            ProfDeptTableSeeder::class
         ]);
     }
 }

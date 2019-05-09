@@ -23,7 +23,7 @@
         <tr>
           <td>ID</td>
           <td>Department Name</td>
-          <td colspan="2">Actions</td>
+          <td colspan="3">Actions</td>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +39,7 @@
                   <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            <td><a href="{{ route('departments.show',$department->id)}}" class="btn btn-primary">Profs</a></td>
         </tr>
         @endforeach
     </tbody>

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Faculty;
+use App\Professor;
 
-class FacultyController extends Controller
+class ProfessorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all(); 
-        return view('faculties.index', compact('faculties'));
+        $professors = Professor::all(); 
+        return view('professors.index', compact('professors'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('faculties.create');
+        return view('professors.create');
     }
 
     /**
@@ -37,13 +37,13 @@ class FacultyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'faculty_name'=>'required'
+            'professor_name'=>'required'
         ]);
-        $faculty = new Faculty([
-            'faculty_name'=>$request->get('faculty_name')
+        $professor = new Professor([
+            'professor_name'=>$request->get('professor_name')
         ]);
-        $faculty->save();
-        return redirect('/faculties')->with('success', 'Faculty has been added');
+        $professor->save();
+        return redirect('/professors')->with('success', 'Professor has been added');
     }
 
     /**
@@ -54,9 +54,9 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculties = Faculty::find($id);
-        $departments = $faculties->departments;
-        return view('faculties.show', compact('faculties','departments'));
+        $professors = Professor::find($id);
+        $prof_dept = $professors->departments;
+        return view('professors.show', compact('professors','prof_dept'));
     }
 
     /**
@@ -67,8 +67,8 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        $faculty = Faculty::find($id);
-        return view('faculties.edit', compact('faculty'));
+        $professor = Professor::find($id);
+        return view('professors.edit', compact('professor'));
     }
 
     /**
@@ -81,13 +81,13 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'faculty_name'=>'required'
+            'professor_name'=>'required'
         ]);
 
-        $faculty = Faculty::find($id);
-        $faculty->faculty_name = $request->get('faculty_name');
-        $faculty->save();
-        return redirect('/faculties')->with('success', 'Faculty has been updated');
+        $professor = Professor::find($id);
+        $professor->professor_name = $request->get('professor_name');
+        $professor->save();
+        return redirect('/professors')->with('success', 'Professor has been updated');
     }
 
     /**
@@ -98,8 +98,9 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        $faculty = Faculty::find($id);
-        $faculty->delete();
-        return redirect('/faculties')->with('success', 'Faculty has been deleted Successfully');
+        $professor = Professor::find($id);
+        $professor->delete();
+        return redirect('/professors')->with('success', 'Professor has been deleted Successfully');
     }
+
 }

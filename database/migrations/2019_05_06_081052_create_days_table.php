@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProfessorTimesTable extends Migration
+class CreateDaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateProfessorTimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('professor_times', function (Blueprint $table) {
+        Schema::create('days', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('teaching_time');
+            $table->string('day', 15);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateProfessorTimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professor_times');
+        Schema::dropIfExists('days');
     }
 }
