@@ -15,4 +15,8 @@ class Department extends Model
     {
         return $this->belongsToMany('App\Professor', 'prof_dept', 'department_id', 'professor_id');
     }
+
+    public function prof_department(){
+        return $this->belongsTo(Department::class);
+    }
 }
