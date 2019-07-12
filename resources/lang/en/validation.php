@@ -132,6 +132,9 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+    'class.required' => 'The subject is empty. ',
+    'day.required' => 'The day is empty. ',
+    'time.required' => 'The time is empty. ',
 
     /*
     |--------------------------------------------------------------------------

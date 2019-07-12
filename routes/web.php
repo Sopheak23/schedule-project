@@ -11,17 +11,32 @@
 |
 */
 
+// Route::resource('shares', 'ShareController');
+Route::resource('faculties', 'FacultyController');
+Route::resource('departments', 'DepartmentController');
+Route::get('departments/create/{id}', 'DepartmentController@create');
+Route::resource('buildings', 'BuildingController');
+Route::resource('rooms', 'RoomController');
+Route::get('rooms/create/{id}', 'RoomController@create');
+Route::resource('subjects', 'SubjectController');
+Route::resource('professors', 'ProfessorController');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('shares', 'ShareController');
-Route::resource('faculties','FacultyController');
-Route::resource('departments','DepartmentController');
-Route::get('departments/create/{id}','DepartmentController@create');
-Route::resource('buildings','BuildingController');
-Route::resource('rooms','RoomController');
-Route::get('rooms/create/{id}','RoomController@create');
-Route::resource('subjects','SubjectController');
-Route::resource('professors','ProfessorController');
+// for Classes route
+Route::get('/classes', 'ClassController@index')->name("ShowAllCreateClass");
+Route::get('/classes/create', 'ClassController@create')->name("ClassesCreate");
+Route::post('/classes/store', 'ClassController@store')->name("StoreClassesCreate");
+Route::get('/classes/{id}/edit', 'ClassController@edit')->name("EditClassesCreate");
+// 1. problem for editing, due i use department in prof_dept so when id more than (6). it will response error
+Route::post('/classes/update/{id}','ClassController@update')->name("UpdateClassCreate");
+Route::post('/classes/delete/{id}','ClassController@destroy')->name("DeleteClassesCreate");
 
+
+// Route for Schedule
+Route::get('/schedules','Assigned_RoomController@index');
+Route::get('/schedules/{time}','Assigned_RoomController@create');
+Route::post('/schedules','Assigned_RoomController@store')->name('StoreAssignedClass');
