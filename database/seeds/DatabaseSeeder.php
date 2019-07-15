@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             ProfessorsTableSeeder::class,
             DaysTableSeeder::class,
             TimesTableSeeder::class,
-            ProfDeptTableSeeder::class
+            ProfDeptTableSeeder::class,
+            DayPartsTableSeeder::class,
+            TestTimesTableSeeder::class
         ]);
     }
 }

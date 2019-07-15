@@ -12,19 +12,15 @@
 */
 
 // Route::resource('shares', 'ShareController');
-Route::resource('faculties', 'FacultyController');
-Route::resource('departments', 'DepartmentController');
-Route::get('departments/create/{id}', 'DepartmentController@create');
-Route::resource('buildings', 'BuildingController');
-Route::resource('rooms', 'RoomController');
-Route::get('rooms/create/{id}', 'RoomController@create');
-Route::resource('subjects', 'SubjectController');
-Route::resource('professors', 'ProfessorController');
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Auth::routes();
+
 
 // for Classes route
 Route::get('/classes', 'ClassController@index')->name("ShowAllCreateClass");
@@ -37,6 +33,18 @@ Route::post('/classes/delete/{id}','ClassController@destroy')->name("DeleteClass
 
 
 // Route for Schedule
-Route::get('/schedules','Assigned_RoomController@index');
+Route::get('/schedules','Assigned_RoomController@index')->name('room.schedule');
 Route::get('/schedules/{time}','Assigned_RoomController@create');
 Route::post('/schedules','Assigned_RoomController@store')->name('StoreAssignedClass');
+
+Route::resource('faculties', 'FacultyController');
+Route::resource('departments', 'DepartmentController');
+Route::get('departments/create/{id}', 'DepartmentController@create');
+Route::resource('buildings', 'BuildingController');
+Route::resource('rooms', 'RoomController');
+Route::get('rooms/create/{id}', 'RoomController@create');
+Route::resource('subjects', 'SubjectController');
+Route::resource('professors', 'ProfessorController');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
