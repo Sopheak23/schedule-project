@@ -12,17 +12,17 @@ class RoomsTableSeeder extends Seeder
     public function run()
     {
         \App\Room::insert([
-            'room_name'=>Str::random(3),
+            'room_name'=> '001',
             'total_students'=>rand(50,150),
             'building_id'=>1
         ]);
         \App\Room::insert([
-            'room_name'=>Str::random(3),
+            'room_name'=> '002',
             'total_students'=>rand(50,150),
             'building_id'=>1
         ]);
         \App\Room::insert([
-            'room_name'=>Str::random(3),
+            'room_name'=> '003',
             'total_students'=>rand(50,150),
             'building_id'=>1
         ]);

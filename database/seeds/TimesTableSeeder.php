@@ -14,6 +14,51 @@ class TimesTableSeeder extends Seeder
     public function run()
     {
         DB::table('times')->insert([
+            'time' => '7:00',
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:30'
+        ]);
+        DB::table('times')->insert([
+            'time' => '8:00'
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:00'
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:30'
+        ]);
+        DB::table('times')->insert([
+            'time' => '8:00'
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:00',
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:30'
+        ]);
+        DB::table('times')->insert([
+            'time' => '8:00'
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:00'
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:30'
+        ]);
+        DB::table('times')->insert([
+            'time' => '8:00'
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:00',
+        ]);
+        DB::table('times')->insert([
+            'time' => '7:30'
+        ]);
+        DB::table('times')->insert([
+            'time' => '8:00'
+        ]);
+        DB::table('times')->insert([
             'time' => '7:00'
         ]);
         DB::table('times')->insert([

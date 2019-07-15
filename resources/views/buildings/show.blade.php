@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 <style>
@@ -13,37 +13,42 @@
     </div><br />
   @endif
   <div class="card-header">
-    Building {{$buildings->building_name}}
+    {{$buildings->building_name}}
   </div>
   <div class="card-body">
     <a href="{{ route('rooms.create')}}/{{$buildings->id}}" class="btn btn-primary">Add Room</a>
   </div>
-  <table class="table table-striped">
-    <thead>
-        <tr>
-          <td>ID</td>
-          <td>Room Name</td>
-          <td>Total Students</td>
-          <td colspan="3">Action</td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($rooms as $room)
-        <tr>
-            <td>{{$room->id}}</td>
-            <td>{{$room->room_name}}</td>
-            <td>{{$room->total_students}}</td>
-            <td><a href="{{ route('rooms.edit',$room->id)}}" class="btn btn-primary">Edit</a></td>
-            <td>
-                <form action="{{ route('rooms.destroy', $room->id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-  </table>
-<div>
+      <div class="table-responsive-sm">
+          <div class="box">
+              <div class="container-fluid">
+                  <div class="row">
+                      @foreach ($buildings->rooms as $room)
+                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+                              <div class="card" style="max-width: 20rem;">
+                                  <h3 class="card-header">
+                                      {{ $room->room_name }}
+                                  </h3>
+                                  <div class="card-body">
+                                      {{--                                <p class="card-text">Total room:{!! $building->total_rooms !!}</p>--}}
+                                      <p class="card-text">Total Students  :{!! $room->total_students !!}</p>
+                                      {{--                                <p class="card-text">Total room per floor:{!! $building->total_rooms_per_floor !!}</p>--}}
+                                  </div>
+                                  <div class="card-footer">
+                                      {!! Form::open(['route' => ['buildings.destroy', $buildings->id], 'method' => 'delete']) !!}
+                                      <div class='btn-group'>
+                                          <a href="{!! route('room.schedule') !!}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
+                                          <a href="{!! route('buildings.edit', [$buildings->id]) !!}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
+                                          {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                                      </div>
+                                      {!! Form::close() !!}
+                                  </div>
+                              </div>
+                          </div>
+                      @endforeach
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>
 @endsection
