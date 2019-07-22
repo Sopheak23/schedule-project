@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Assigned_Room;
+use App\Classes;
+use App\Day;
+use App\Day_Part;
 use App\Floor;
+use App\test_time;
+use App\Time;
 use Illuminate\Http\Request;
 use App\Room;
 
@@ -58,7 +64,14 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        //
+        $classes = Classes::all();
+        $assigned_rooms = Assigned_Room::all();
+        $days = Day::all();
+        $times = Time::all();
+        $rooms = Room::all();
+        $day_parts = Day_Part::all();
+        $test_times = test_time::all();
+        return view('schedule.index', compact('classes','assigned_rooms','days','times','rooms','day_parts', 'test_times'));
     }
 
     /**

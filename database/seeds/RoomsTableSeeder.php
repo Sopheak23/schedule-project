@@ -12,24 +12,24 @@ class RoomsTableSeeder extends Seeder
     public function run()
     {
         \App\Room::insert([
-            'room_name'=> '001',
+            'name'=> '001',
             'total_students'=>rand(50,150),
-            'building_id'=>1
+            'floor_id'=>1
         ]);
         \App\Room::insert([
-            'room_name'=> '002',
+            'name'=> '002',
             'total_students'=>rand(50,150),
-            'building_id'=>1
+            'floor_id'=>1
         ]);
         \App\Room::insert([
-            'room_name'=> '003',
+            'name'=> '003',
             'total_students'=>rand(50,150),
-            'building_id'=>1
+            'floor_id'=>1
         ]);
         \App\Room::insert([
-            'room_name'=>Str::random(3),
+            'name'=>Str::random(3),
             'total_students'=>rand(50,150),
-            'building_id'=>2
+            'floor_id'=>2
         ]);
     }
 }
