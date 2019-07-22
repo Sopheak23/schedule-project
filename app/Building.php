@@ -7,14 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Building extends Model
 {
     protected $fillable = [
-        'building_name', 
-        'total_floors',
-        'total_rooms',
-        'total_rooms_per_floor'
+        'building_name',
     ];
 
-    public function rooms()
+    public function floors()
     {
-        return $this->hasMany('App\Room');
+        return $this->hasMany('App\Floor');
     }
 }
