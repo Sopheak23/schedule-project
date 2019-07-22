@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Floor;
 use Illuminate\Http\Request;
 use App\Room;
 
@@ -19,13 +20,12 @@ class RoomController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param $floor_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create($id)
+    public function create($floor_id)
     {
-        return view('rooms.create',['building_id' => $id]);
+        return view('rooms.create')->with('floor_id', $floor_id);
     }
 
     /**
@@ -36,20 +36,18 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'room_name'=>'required',
-            'total_students'=>'required'
-        ]);
+        $room = new Room();
 
-        $room = new Room([
-            'room_name'=>$request->get('room_name'),
-            'total_students'=>$request->get('total_students'),
-            'building_id' => $request->get('building_id')
-        ]);
+        $floor_id = $request->floor_id;
+        $floor = Floor::find($floor_id);
+        $building_id = $floor->building->id;
 
+        $room->name = $request->name;
+        $room->total_students = $request->total_students;
+        $room->floor_id = $request->floor_id;
         $room->save();
-        $building_id = $room->building_id;
-        return redirect('/buildings/'.$building_id )->with('success', 'Room has been added');
+
+        return redirect(route('buildings.show', $building_id));
     }
 
     /**
@@ -84,17 +82,14 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'room_name'=>'required',
-            'total_students'=>'required'
-        ]);
+
+
         $room = Room::find($id);
-        $room->room_name = $request->get('room_name');
-        $room->total_students = $request->get('total_students');        
+        $room->name = $request->name;
+        $room->total_students = $request->total_students;
         $room->save();
 
-        $building_id = $room->building_id;
-        return redirect('/buildings/'. $building_id)->with('success', 'Room has been updated');
+        return redirect(route('buildings.show', $room->floor->building->id));
     }
 
     /**

@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     protected $fillable = [
-        'room_name',
+        'name',
         'total_students',
-        'building_id'
+        'floor_id',
     ];
+
+    public function floor()
+    {
+        return $this->belongsTo('App\Floor');
+    }
 }
