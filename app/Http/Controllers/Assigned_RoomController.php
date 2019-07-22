@@ -31,7 +31,7 @@ class Assigned_RoomController extends Controller
     public function create($selected_time){
         dd($selected_time);
         $classed = Classes::find($selected_time);
-        return view('shedule.index', compact('classed'));
+        return view('schedule.index', compact('classed'));
     }
 
     public function store(Request $request){

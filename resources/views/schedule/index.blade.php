@@ -45,8 +45,8 @@
         {{-- display each room name --}}
             @foreach ($rooms as $room)
                 <tr>
-                    <th class="room_{{$room->room_name}}" rowspan="5">
-                        {{$room->room_name}}
+                    <th class="room_{{$room->name}}" rowspan="5">
+                        {{$room->name}}
                     </th>
                     {{-- display each day --}}
                     @foreach ($test_times as $test_time)
