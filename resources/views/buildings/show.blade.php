@@ -39,7 +39,7 @@
                                 <div class="card-footer">
                                     {!! Form::open(['route' => ['buildings.destroy', $buildings->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
-                                        <a href="{!! route('room.schedule') !!}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
+                                        <a href="{!! route('ShowRoomSchedule', ['building_id'=> $buildings->id , 'room_id'=> $room->id ]) !!}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
                                         <a href="{!! route('buildings.edit', [$buildings->id]) !!}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
                                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                                     </div>

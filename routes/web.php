@@ -31,9 +31,14 @@ Route::post('/classes/update/{id}','ClassController@update')->name("UpdateClassC
 Route::post('/classes/delete/{id}','ClassController@destroy')->name("DeleteClassesCreate");
 
 // schedule for each building
-Route::get('/buildings/{id}/schedule', 'ScheduleController@index')->name('building.schedule');
-Route::get('/buildings/schedule/{time}', 'ScheduleController@filterClasses');
-Route::post('/buildings/schedule/{id}', 'ScheduleController@store')->name('BuildingStoreAssignedClass');
+Route::get('/buildings/{id}/schedule', 'BuildingScheduleController@index')->name('building.schedule');
+Route::get('/buildings/schedule/{time}', 'BuildingScheduleController@filterClasses');
+Route::post('/buildings/schedule/{id}', 'BuildingScheduleController@store')->name('BuildingStoreAssignedClass');
+
+// schedule for each room
+Route::get('/buildings/{building_id}/room/{room_id}', 'RoomScheduleController@index')->name('ShowRoomSchedule');
+Route::get('/buildings/room/schedule/{time}', 'RoomScheduleController@filterClasses');
+Route::post('/buildings/{building_id}/room/schedule/{room_id}', 'RoomScheduleController@store')->name('RoomStoreAssignedClass');
 
 // Route for Schedule
 Route::get('/schedules','Assigned_RoomController@index')->name('room.schedule');

@@ -13,7 +13,7 @@ use App\Assigned_Room;
 use App\ClassRoom;
 use Illuminate\Support\Facades\Validator;
 
-class ScheduleController extends Controller
+class BuildingScheduleController extends Controller
 {
     public function index($id){
         // dd($id);

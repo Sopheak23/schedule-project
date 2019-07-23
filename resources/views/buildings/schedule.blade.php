@@ -21,7 +21,7 @@
 @endif
 <div>
     <h3>Schedule Table:</h3>
-    <button href="/buildings">Back</button>
+    <button href="{{ URL::previous() }}">Back</button>
 </div>
 
 <div>
