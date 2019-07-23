@@ -19,9 +19,9 @@
         {{ session()->get('message') }}
     </div>
 @endif
-<div>
-    <h3>Schedule Table:</h3>
-    <button href="{{ URL::previous() }}">Back</button>
+<div style="margin: 10px 10px 20px 5px;">
+    <h3 style="display: inline;">Schedule Table:</h3>
+    <button href="javascript:history.back()" class="btn btn-primary" style="display: inline; float: right;">Back</button>
 </div>
 
 <div>

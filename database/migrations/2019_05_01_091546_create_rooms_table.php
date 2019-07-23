@@ -19,7 +19,8 @@ class CreateRoomsTable extends Migration
             $table->bigInteger('total_students');
             $table->bigInteger('building_id')->unsigned();
             $table->timestamps();
-            
+            $table->softDeletes();
+
             $table->foreign('building_id')->references('id')->on('buildings');
         });
     }

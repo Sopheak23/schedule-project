@@ -20,6 +20,7 @@ class CreateAssignedRoomsTable extends Migration
             $table->bigInteger('day_id')->unsigned();
             $table->time('start_time');
             $table->time('end_time');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');

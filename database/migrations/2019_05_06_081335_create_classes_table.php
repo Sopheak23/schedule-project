@@ -21,6 +21,7 @@ class CreateClassesTable extends Migration
             $table->string('day');
             $table->time('start_time');
             $table->time('end_time');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');

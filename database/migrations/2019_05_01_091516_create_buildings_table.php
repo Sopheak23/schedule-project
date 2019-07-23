@@ -20,6 +20,7 @@ class CreateBuildingsTable extends Migration
             $table->bigInteger('total_rooms');
             $table->bigInteger('total_rooms_per_floor');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

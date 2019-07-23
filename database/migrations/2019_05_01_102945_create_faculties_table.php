@@ -17,6 +17,8 @@ class CreateFacultiesTable extends Migration
             $table->bigIncrements('id');
             $table->string('faculty_name')->unique();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
