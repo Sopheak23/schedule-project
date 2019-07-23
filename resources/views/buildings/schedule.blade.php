@@ -20,8 +20,8 @@
     </div>
 @endif
 <div style="margin: 10px 10px 20px 5px;">
-    <h3 style="display: inline;">Schedule Table:</h3>
-    <button type="submit" class="btn btn-primary" style="display: inline; float: right; "><a href="{{ URL::previous() }}" style="color:white;">Back</a></button>
+    <h3 style="display: inline;">Schedule : {{$building->building_name}}</h3>
+    <button type="submit" class="btn btn-primary" style="display: inline; float: right; "><a href="{{ URL('buildings/'.$building->id )}}" style="color:white;">Back</a></button>
 </div>
 
 <div>
@@ -63,7 +63,7 @@
                                             <?php $assigned = false; ?>
                                             @foreach ($assigned_rooms as $assigned_room)
                                                 @if ($assigned_room->start_time === $test_time->morning && $assigned_room->day->day == $day->day && $assigned_room->room->room_name == $room->room_name)
-                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="font-size: 12px;border-radius:0px; width:70px; height:28px; white-space: normal; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
+                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px; width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
                                                         {{-- <span style="font-size: 12px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                         {{$assigned_room->class->subject->subject_name}}
                                                         <?php $assigned = true; ?>
@@ -81,7 +81,7 @@
                                             <?php $assigned = false; ?>
                                             @foreach ($assigned_rooms as $assigned_room)
                                                 @if ($assigned_room->start_time === $test_time->afternoon && $assigned_room->day->day == $day->day && $assigned_room->room->room_name == $room->room_name)
-                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="font-size: 12px;border-radius:0px;width:70px; height:28px; white-space: normal; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
+                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px;width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
                                                         {{-- <span style="font-size: 12px;padding-bottom:5px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                         {{$assigned_room->class->subject->subject_name}}
                                                         <?php $assigned = true; ?>
@@ -100,7 +100,7 @@
                                             @foreach ($assigned_rooms as $assigned_room)
                                                 <?php $time = null; ?>
                                                 @if ($assigned_room->start_time === $test_time->evening && $assigned_room->day->day == $day->day && $assigned_room->room->room_name == $room->room_name)
-                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="font-size: 12px;border-radius:0px;width:70px; height:28px; white-space: normal; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
+                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px;width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
                                                         {{-- <span style="font-size: 12px;padding-bottom:5px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                         {{$assigned_room->class->subject->subject_name}}
                                                         <?php $assigned = true; ?>
@@ -134,7 +134,7 @@
                 </button> --}}
             </div>
             <div class="modal-body">
-                <form action="{{route('BuildingStoreAssignedClass',['id'=> $building_id])}}" method="POST">
+                <form action="{{route('BuildingStoreAssignedClass',['id'=> $building->id])}}" method="POST">
                     {{csrf_field()}}
                     <div class="form-group row" style="margin: 40 0 40 50px; width: 600px; height: 50px;margin-bottom: 40px; font-weight:bold;">
                         <label class="col-sm-2 col-form-label">Class </label>

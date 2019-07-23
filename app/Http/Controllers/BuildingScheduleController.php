@@ -12,6 +12,7 @@ use App\TestTime;
 use App\Assigned_Room;
 use App\ClassRoom;
 use Illuminate\Support\Facades\Validator;
+use App\Building;
 
 class BuildingScheduleController extends Controller
 {
@@ -22,10 +23,10 @@ class BuildingScheduleController extends Controller
         $days = Day::all();
         $times = Time::all();
         $rooms = Room::where('building_id', '=', $id)->get();
-        $building_id = $id;
+        $building = Building::find($id);
         $day_parts = Day_Part::all();
         $test_times = TestTime::all();
-        return view('buildings.schedule', compact('classes','assigned_rooms','days','times','rooms','day_parts', 'test_times', 'building_id'));
+        return view('buildings.schedule', compact('classes','assigned_rooms','days','times','rooms','day_parts', 'test_times', 'building'));
 
     }
 
