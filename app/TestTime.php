@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class test_time extends Model
+class TestTime extends Model
 {
-    
+    protected $table = 'test_times';
 }

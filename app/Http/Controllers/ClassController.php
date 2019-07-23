@@ -15,18 +15,18 @@ use App\Classes;
 
         public function index(){
             $classes = Classes::all();
-            $subjects = Subject::all();
-            $days = Day::all();
-            $times = Time::all();
-            $prof_depts = Prof_Dept::all();
-            return view('classes.index',compact('classes','departments','subjects','days','times','prof_depts'));
+            // $subjects = Subject::all();
+            // $days = Day::all();
+            // $times = Time::all();
+            // $prof_depts = Prof_Dept::all();
+            return view('classes.index',compact('classes'));
         }
 
         public function create(){
             $departments = Department::all();
             $subjects = Subject::all();
-            $days = Day::all();
-            $times = Time::all();
+            // $days = Day::all();
+            // $times = Time::all();
             $prof_depts = Prof_Dept::all();
             return view('classes.create', compact('departments','subjects','days','times','prof_depts'));
         }
@@ -34,12 +34,12 @@ use App\Classes;
         public function store(request $request){
             // dd($request->all());
             $classes = new Classes([
-                        'subject_id'=>$request->get('subject_id'),
-                        'prof_dept_id'=>$request->get('prof_dept_id'),
-                        'total_students'=>$request->get('total_students'),
-                        'day_id'=>$request->get('day_id'),
-                        'start_time'=>$request->get('start_time'),
-                        'end_time'=>$request->get('end_time')
+                        'subject_id' => $request->get('subject_id'),
+                        'prof_dept_id' => $request->get('prof_dept_id'),
+                        'total_students' => $request->get('total_students'),
+                        'day' => $request->get('day_id'),
+                        'start_time' => $request->get('start_time'),
+                        'end_time' => $request->get('end_time')
            ]);
             $classes->save();
             return redirect('/classes')->with('success', 'Building has been added');
@@ -76,7 +76,7 @@ use App\Classes;
         $classes->subject_id = $request->get('subject_id');
         $classes->prof_dept_id = $request->get('prof_dept_id');
         $classes->total_students = $request->get('total_students');
-        $classes->day_id = $request->get('day_id');
+        $classes->day = $request->get('day_id');
         $classes->start_time = $request->get('start_time');
         $classes->end_time = $request->get('end_time');
         $classes->save();

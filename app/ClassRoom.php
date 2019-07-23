@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Classes extends Model
+class ClassRoom extends Model
 {
     protected $table = 'classes';
 
@@ -12,7 +12,7 @@ class Classes extends Model
         'subject_id',
         'prof_dept_id',
         'total_students',
-        'day',
+        'day_id',
         'start_time',
         'end_time'
     ];

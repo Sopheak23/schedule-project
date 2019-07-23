@@ -19,7 +19,10 @@
         {{ session()->get('message') }}
     </div>
 @endif
-<h3>Schedule Table:</h3>
+<div>
+    <h3>Schedule Table:</h3>
+    <button href="/buildings">Back</button>
+</div>
 
 <div>
     <table class="table table-bordered" style="font-size:10px;text-align:center;vertical-align: middle;">
@@ -131,7 +134,7 @@
                 </button> --}}
             </div>
             <div class="modal-body">
-                <form action="{{route('StoreAssignedClass')}}" method="POST">
+                <form action="{{route('BuildingStoreAssignedClass',['id'=> $building_id])}}" method="POST">
                     {{csrf_field()}}
                     <div class="form-group row" style="margin: 40 0 40 50px; width: 600px; height: 50px;margin-bottom: 40px; font-weight:bold;">
                         <label class="col-sm-2 col-form-label">Class </label>
@@ -240,7 +243,7 @@ $(document).ready(function(){
             });
             $.ajax({
                 type: 'GET',
-                url: "/schedules/"+room_time,
+                url: "/buildings/schedule/"+room_time,
                 data: ({
                         room_time: room_time,
                         room_seats: room_seats,

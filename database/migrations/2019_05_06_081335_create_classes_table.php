@@ -18,16 +18,13 @@ class CreateClassesTable extends Migration
             $table->bigInteger('subject_id')->unsigned();
             $table->bigInteger('prof_dept_id')->unsigned();
             $table->bigInteger('total_students');
-            $table->bigInteger('day_id')->unsigned();
-            $table->bigInteger('start_time')->unsigned();
-            $table->bigInteger('end_time')->unsigned();
+            $table->string('day');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
 
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->foreign('prof_dept_id')->references('id')->on('prof_dept')->onDelete('cascade');
-            $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
-            $table->foreign('start_time')->references('id')->on('times')->onDelete('cascade');
-            $table->foreign('end_time')->references('id')->on('times')->onDelete('cascade');
         });
     }
 
