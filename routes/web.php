@@ -39,7 +39,7 @@ Route::post('/buildings/schedule/{id}', 'BuildingScheduleController@store')->nam
 Route::get('/buildings/{building_id}/room/{room_id}', 'RoomScheduleController@index')->name('ShowRoomSchedule');
 Route::get('/buildings/room/schedule/{time}', 'RoomScheduleController@filterClasses');
 Route::post('/buildings/{building_id}/room/schedule/{room_id}', 'RoomScheduleController@store')->name('RoomStoreAssignedClass');
-
+ 
 // Route for Schedule
 Route::get('/schedules','Assigned_RoomController@index')->name('room.schedule');
 Route::get('/schedules/{time}','Assigned_RoomController@filterClasses');

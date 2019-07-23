@@ -70,6 +70,10 @@ class BuildingScheduleController extends Controller
         $assigned_room->end_time = $request->end_time;
         $assigned_room->save();
 
-        return redirect()->action('ScheduleController@index', ['id' => $id])->with('message', 'Class has been assigned Successfully!!! ');;
+        $willDeleteId = $request->class_id;
+
+        ClassRoom::find($willDeleteId)->delete();
+
+        return redirect()->action('BuildingScheduleController@index', ['id' => $id])->with('message', 'Class has been assigned Successfully!!! ');;
     }
 }

@@ -21,7 +21,7 @@
 @endif
 <div style="margin: 10px 10px 20px 5px;">
     <h3 style="display: inline;">Schedule Table:</h3>
-    <button href="javascript:history.back()" class="btn btn-primary" style="display: inline; float: right;">Back</button>
+    <button type="submit" class="btn btn-primary" style="display: inline; float: right; "><a href="{{ URL::previous() }}" style="color:white;">Back</a></button>
 </div>
 
 <div>
@@ -187,7 +187,7 @@
 
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                    <button type="submit" id="save_assign" class="btn btn-primary" style="margin-left: 50px;background-color: #7db280;border-color:#7db300;">Save Assign</button>
+                    <button type="submit" id="save_assign" class="btn btn-primary" style="margin-left: 50px;background-color: #7db300;border-color:#7db300;">Save Assign</button>
 
                 </form>
             </div>
