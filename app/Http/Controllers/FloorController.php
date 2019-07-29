@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Floor;
+use App\Building;
 use Illuminate\Http\Request;
 
 class FloorController extends Controller
@@ -23,7 +24,12 @@ class FloorController extends Controller
      */
     public function create($building_id)
     {
-        return view('floors.create')->with('building_id', $building_id);
+        $building = Building::find($building_id);
+        $building_name = $building->name;
+
+        return view('floors.create')
+        ->with('building_id', $building_id)
+        ->with('building_name', $building_name);
     }
 
     /**

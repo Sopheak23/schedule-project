@@ -89,7 +89,18 @@ class BuildingController extends Controller
     public function destroy($id)
     {
         $building = Building::find($id);
+        $floors = $building->floors;
+
+        foreach ($floors as $floor) {
+            $rooms = $floor->rooms;
+            foreach ($rooms as $room) {
+                $room->delete();
+            }
+            $floor->delete();
+        }
+
         $building->delete();
+        
         return redirect('/buildings')->with('success', 'Building has been deleted Successfully');
     }
 }
