@@ -43,7 +43,7 @@
                                                                     {{--                                <p class="card-text">Total room per floor:{!! $building->total_rooms_per_floor !!}</p>--}}
                                                                 </div>
                                                                 <div class="card-footer">
-                                                                    {!! Form::open(['route' => ['buildings.destroy', $building->id], 'method' => 'delete']) !!}
+                                                                    {!! Form::open(['route' => ['rooms.destroy', $room->id], 'method' => 'delete']) !!}
                                                                     <div class='btn-group'>
                                                                         <a href="{!! route('rooms.show', [$room->id]) !!}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
                                                                         <a href="{!! route('rooms.edit', [$room->id]) !!}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>

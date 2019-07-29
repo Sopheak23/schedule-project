@@ -11,7 +11,7 @@
                         <div class="card-header">
                             <i class="fa fa-align-justify"></i>
                             Buildings
-                            <a class="pull-right" href="{!! route('buildings.create') !!}"><i class="fa fa-plus-square fa-lg"></i></a>
+                            <a class="pull-right" href="{!! route('buildings.create') !!}">Add Building <i class="fa fa-plus-square fa-lg"></i></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive-sm">

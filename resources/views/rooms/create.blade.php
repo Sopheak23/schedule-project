@@ -3,9 +3,12 @@
 @section('content')
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="{!! route('rooms.index') !!}">Room</a>
+            <a href="{{ route('buildings.index') }}">All Buildings</a>
         </li>
-        <li class="breadcrumb-item active">Create</li>
+        <li class="breadcrumb-item">
+            <a href="{{ route('buildings.show', $building_id) }}">{{ $building_name }}</a>
+        </li>
+        <li class="breadcrumb-item active">Create Room</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">

@@ -31,7 +31,14 @@ class RoomController extends Controller
      */
     public function create($floor_id)
     {
-        return view('rooms.create')->with('floor_id', $floor_id);
+        $floor = Floor::find($floor_id);
+        $building_id = $floor->building->id;
+        $building_name = $floor->building->name;
+
+        return view('rooms.create')
+        ->with('floor_id', $floor_id)
+        ->with('building_id', $building_id)
+        ->with('building_name', $building_name);
     }
 
     /**
@@ -83,7 +90,11 @@ class RoomController extends Controller
     public function edit($id)
     {
         $room = Room::find($id);
-        return view('rooms.edit', compact('room'));
+        $building_id = $room->floor->building->id;
+
+        return view('rooms.edit')
+        ->with('room', $room)
+        ->with('building_id', $building_id);
     }
 
     /**
@@ -114,8 +125,8 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $room = Room::find($id);
-        $building_id = $room->building_id;
+        $building_id = $room->floor->building->id;
         $room->delete();
-        return redirect('/buildings/'. $building_id)->with('success', 'Room has been deleted Successfully');
+        return redirect(route('buildings.show', $building_id))->with('success', 'Room has been deleted Successfully');
     }
 }
