@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 <style>
@@ -9,11 +9,12 @@
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">
-      {{ session()->get('success') }}  
+      {{ session()->get('success') }}
     </div><br />
   @endif
   <div class="card-header">
-  Professor {{$professors->professor_name}}<br>
+  Professor name: <strong>{{$professors->professor_name}}</strong>
+  <br>
   List of Departments
   </div>
   <table class="table table-striped">
