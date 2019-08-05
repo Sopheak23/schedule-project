@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             FacultiesTableSeeder::class,
             DepartmentsTableSeeder::class,
             BuildingsTableSeeder::class,
+            FloorsTableSeeder::class,
             RoomsTableSeeder::class,
             ProfessorsTableSeeder::class,
             DaysTableSeeder::class,

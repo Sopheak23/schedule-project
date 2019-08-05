@@ -1,37 +1,48 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="card uper">
-  <div class="card-header">
-    Edit Room
-  </div>
-  <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
-    @endif
-      <form method="post" action="{{ route('rooms.update', $room->id) }}">
-        @method('PATCH')
-        @csrf
-        <div class="form-group">
-          <label for="name">Room Name:</label>
-          <input type="text" class="form-control" name="room_name" value={{ $room->room_name }} />
-          <label for="name">Total Students:</label>
-          <input type="text" class="form-control" name="total_students" value={{ $room->total_students }} />
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{!! route('rooms.index') !!}">Room</a>
+        </li>
+        <li class="breadcrumb-item active">Edit</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa fa-edit fa-lg"></i>
+                            <strong>Edit Room</strong>
+                        </div>
+                        <div class="card-body">
+                            {!! Form::model($room, ['route' => ['rooms.update', $room->id], 'method' => 'patch']) !!}
+
+                            <!-- Name Field -->
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('name', 'Name:') !!}
+                                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                                </div>
+
+                                <!-- Total Students Field -->
+                                <div class="form-group col-sm-6">
+                                    {!! Form::label('total_students', 'Total Students:') !!}
+                                    {!! Form::number('total_students', null, ['class' => 'form-control']) !!}
+                                </div>
+
+                                <!-- Submit Field -->
+                                <div class="form-group col-sm-12">
+                                    {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+                                    <a href="{!! route('buildings.show', $building_id) !!}" class="btn btn-default">Cancel</a>
+                                </div>
+
+
+                                {!! Form::close() !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <button type="submit" class="btn btn-primary">Update</button>
-      </form>
-  </div>
-</div>
+    </div>
 @endsection

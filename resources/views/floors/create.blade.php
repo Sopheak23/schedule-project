@@ -8,7 +8,7 @@
         <li class="breadcrumb-item">
             <a href="{{ route('buildings.show', $building_id) }}">{{ $building_name }}</a>
         </li>
-        <li class="breadcrumb-item active">Create Room</li>
+        <li class="breadcrumb-item active">Create Floor</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -17,28 +17,22 @@
                     <div class="card">
                         <div class="card-header">
                             <i class="fa fa-plus-square-o fa-lg"></i>
-                            <strong>Create Room</strong>
+                            <strong>Create Floor</strong>
                         </div>
                         <div class="card-body">
-                            {!! Form::open(['route' => 'rooms.store']) !!}
+                            {!! Form::open(['route' => 'floors.store']) !!}
 
                             <!-- Name Field -->
                                 <div class="form-group col-sm-6">
                                     {!! Form::label('name', 'Name:') !!}
                                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                                    <input type="hidden" value="{{ $floor_id }}" name="floor_id">
-                                </div>
-
-                                <!-- Total Students Field -->
-                                <div class="form-group col-sm-6">
-                                    {!! Form::label('total_students', 'Total Students:') !!}
-                                    {!! Form::number('total_students', null, ['class' => 'form-control']) !!}
+                                    <input type="hidden" value="{{ $building_id }}" name="building_id">
                                 </div>
 
                                 <!-- Submit Field -->
                                 <div class="form-group col-sm-12">
                                     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                                    <a href="{!! route('rooms.index') !!}" class="btn btn-default">Cancel</a>
+                                    <a href="{!! route('floors.index') !!}" class="btn btn-default">Cancel</a>
                                 </div>
 
 

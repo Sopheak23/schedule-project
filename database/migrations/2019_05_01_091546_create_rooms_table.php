@@ -15,9 +15,10 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('room_name', 10)->unique();
-            $table->bigInteger('total_students');
+            $table->unsignedInteger('floor_id')->nullable();
             $table->bigInteger('building_id')->unsigned();
+            $table->string('name', 10)->unique();
+            $table->integer('total_students');
             $table->timestamps();
             $table->softDeletes();
 

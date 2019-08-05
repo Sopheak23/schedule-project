@@ -50,8 +50,8 @@
         {{-- display each room name --}}
             @foreach ($rooms as $room)
                 <tr>
-                    <th class="room_{{$room->room_name}}" rowspan="5">
-                        {{$room->room_name}}
+                    <th class="room_{{$room->name}}" rowspan="5">
+                        {{$room->name}}
                     </th>
                     {{-- display each day --}}
                     @foreach ($test_times as $test_time)
@@ -62,8 +62,8 @@
                                             {{-- //  --}}
                                             <?php $assigned = false; ?>
                                             @foreach ($assigned_rooms as $assigned_room)
-                                                @if ($assigned_room->start_time === $test_time->morning && $assigned_room->day->day == $day->day && $assigned_room->room->room_name == $room->room_name)
-                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px; width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
+                                                @if ($assigned_room->start_time === $test_time->morning && $assigned_room->day->day == $day->day && $assigned_room->room->name == $room->name)
+                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px; width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
                                                         {{-- <span style="font-size: 12px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                         {{$assigned_room->class->subject->subject_name}}
                                                         <?php $assigned = true; ?>
@@ -71,7 +71,7 @@
                                                 @endif
                                             @endforeach
                                             @if ($assigned === false)
-                                                <button type="button" data-room_seats={{$room->total_students}} data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light" style="font-size: 12px;border-radius:0px;width:70px; height:28px;" data-toggle="modal" data-target="#myModal" id="myButton">
+                                                <button type="button" data-room_seats={{$room->total_students}} data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->name}}"  class="btn btn-light" style="font-size: 12px;border-radius:0px;width:70px; height:28px;" data-toggle="modal" data-target="#myModal" id="myButton">
                                                     {{-- <span style="font-size: 12px;padding-bottom:5px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                     {{$test_time->morning}}
                                                 </button>
@@ -80,8 +80,8 @@
                                         <td  style="padding:0;">
                                             <?php $assigned = false; ?>
                                             @foreach ($assigned_rooms as $assigned_room)
-                                                @if ($assigned_room->start_time === $test_time->afternoon && $assigned_room->day->day == $day->day && $assigned_room->room->room_name == $room->room_name)
-                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px;width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
+                                                @if ($assigned_room->start_time === $test_time->afternoon && $assigned_room->day->day == $day->day && $assigned_room->room->name == $room->name)
+                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px;width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
                                                         {{-- <span style="font-size: 12px;padding-bottom:5px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                         {{$assigned_room->class->subject->subject_name}}
                                                         <?php $assigned = true; ?>
@@ -89,7 +89,7 @@
                                                 @endif
                                             @endforeach
                                             @if ($assigned === false)
-                                                <button type="button" data-room_seats={{$room->total_students}} data-time="{{$test_time->afternoon}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light" style="font-size: 12px;border-radius:0px;width:70px; height:28px;" data-toggle="modal" data-target="#myModal" id="myButton">
+                                                <button type="button" data-room_seats={{$room->total_students}} data-time="{{$test_time->afternoon}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->name}}"  class="btn btn-light" style="font-size: 12px;border-radius:0px;width:70px; height:28px;" data-toggle="modal" data-target="#myModal" id="myButton">
                                                     {{-- <span style="font-size: 12px;padding-bottom:5px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                     {{$test_time->afternoon}}
                                                 </button>
@@ -99,8 +99,8 @@
                                             <?php $assigned = false; ?>
                                             @foreach ($assigned_rooms as $assigned_room)
                                                 <?php $time = null; ?>
-                                                @if ($assigned_room->start_time === $test_time->evening && $assigned_room->day->day == $day->day && $assigned_room->room->room_name == $room->room_name)
-                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px;width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
+                                                @if ($assigned_room->start_time === $test_time->evening && $assigned_room->day->day == $day->day && $assigned_room->room->name == $room->name)
+                                                    <button type="button" data-time="{{$test_time->morning}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->name}}"  class="btn btn-light  btn-xs col-lg-12" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: 12px;border-radius:0px;width:70px; height:28px; background-color:#dc3545; border-color:#dc3545; color:white;" data-toggle="modal" data-target="#myModal" id="myButton" disabled="true" >
                                                         {{-- <span style="font-size: 12px;padding-bottom:5px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                         {{$assigned_room->class->subject->subject_name}}
                                                         <?php $assigned = true; ?>
@@ -108,7 +108,7 @@
                                                 @endif
                                             @endforeach
                                             @if ($assigned === false)
-                                                <button type="button" data-room_seats={{$room->total_students}} data-time="{{$test_time->evening}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->room_name}}"  class="btn btn-light" style="font-size: 12px;border-radius:0px;width:70px; height:28px;" data-toggle="modal" data-target="#myModal" id="myButton">
+                                                <button type="button" data-room_seats={{$room->total_students}} data-time="{{$test_time->evening}}" data-day="{{$day->day}}" data-day_id="{{$day->id}}" data-room_id="{{$room->id}}" data-room="{{$room->name}}"  class="btn btn-light" style="font-size: 12px;border-radius:0px;width:70px; height:28px;" data-toggle="modal" data-target="#myModal" id="myButton">
                                                     {{-- <span style="font-size: 12px;padding-bottom:5px;width: 70px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis"></span> --}}
                                                     {{$test_time->evening}}
                                                 </button>

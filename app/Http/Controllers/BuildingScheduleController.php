@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Building;
 
 class BuildingScheduleController extends Controller
-{
+{ 
     public function index($id){
         // dd($id);
         $classes = Classes::all();

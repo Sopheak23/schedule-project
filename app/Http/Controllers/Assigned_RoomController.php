@@ -12,7 +12,6 @@ use App\Day_Part;
 use Illuminate\Support\Facades\Validator;
 use App\TestTime;
 use App\ClassRoom;
-use Illuminate\Support\Facades\DB;
 
 class Assigned_RoomController extends Controller
 {

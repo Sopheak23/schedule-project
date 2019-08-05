@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Assigned_Room;
+use App\Classes;
+use App\Day;
+use App\Day_Part;
+use App\Floor;
+use App\test_time;
+use App\Time;
 use Illuminate\Http\Request;
 use App\Room;
 
@@ -19,13 +26,19 @@ class RoomController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param $floor_id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create($id)
+    public function create($floor_id)
     {
-        return view('rooms.create',['building_id' => $id]);
+        $floor = Floor::find($floor_id);
+        $building_id = $floor->building->id;
+        $building_name = $floor->building->name;
+
+        return view('rooms.create')
+        ->with('floor_id', $floor_id)
+        ->with('building_id', $building_id)
+        ->with('building_name', $building_name);
     }
 
     /**
@@ -36,20 +49,18 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'room_name'=>'required',
-            'total_students'=>'required'
-        ]);
+        $room = new Room();
 
-        $room = new Room([
-            'room_name'=>$request->get('room_name'),
-            'total_students'=>$request->get('total_students'),
-            'building_id' => $request->get('building_id')
-        ]);
+        $floor_id = $request->floor_id;
+        $floor = Floor::find($floor_id);
+        $building_id = $floor->building->id;
 
+        $room->name = $request->name;
+        $room->total_students = $request->total_students;
+        $room->floor_id = $request->floor_id;
         $room->save();
-        $building_id = $room->building_id;
-        return redirect('/buildings/'.$building_id )->with('success', 'Room has been added');
+
+        return redirect(route('buildings.show', $building_id));
     }
 
     /**
@@ -60,7 +71,14 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        //
+        $classes = Classes::all();
+        $assigned_rooms = Assigned_Room::all();
+        $days = Day::all();
+        $times = Time::all();
+        $rooms = Room::all();
+        $day_parts = Day_Part::all();
+        $test_times = test_time::all();
+        return view('schedule.index', compact('classes','assigned_rooms','days','times','rooms','day_parts', 'test_times'));
     }
 
     /**
@@ -72,7 +90,11 @@ class RoomController extends Controller
     public function edit($id)
     {
         $room = Room::find($id);
-        return view('rooms.edit', compact('room'));
+        $building_id = $room->floor->building->id;
+
+        return view('rooms.edit')
+        ->with('room', $room)
+        ->with('building_id', $building_id);
     }
 
     /**
@@ -84,17 +106,14 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'room_name'=>'required',
-            'total_students'=>'required'
-        ]);
+
+
         $room = Room::find($id);
-        $room->room_name = $request->get('room_name');
-        $room->total_students = $request->get('total_students');        
+        $room->name = $request->name;
+        $room->total_students = $request->total_students;
         $room->save();
 
-        $building_id = $room->building_id;
-        return redirect('/buildings/'. $building_id)->with('success', 'Room has been updated');
+        return redirect(route('buildings.show', $room->floor->building->id));
     }
 
     /**
@@ -106,8 +125,8 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $room = Room::find($id);
-        $building_id = $room->building_id;
+        $building_id = $room->floor->building->id;
         $room->delete();
-        return redirect('/buildings/'. $building_id)->with('success', 'Room has been deleted Successfully');
+        return redirect(route('buildings.show', $building_id))->with('success', 'Room has been deleted Successfully');
     }
 }

@@ -39,7 +39,7 @@ Route::post('/buildings/schedule/{id}', 'BuildingScheduleController@store')->nam
 Route::get('/buildings/{building_id}/room/{room_id}', 'RoomScheduleController@index')->name('ShowRoomSchedule');
 Route::get('/buildings/room/schedule/{time}', 'RoomScheduleController@filterClasses');
 Route::post('/buildings/{building_id}/room/schedule/{room_id}', 'RoomScheduleController@store')->name('RoomStoreAssignedClass');
- 
+
 // Route for Schedule
 Route::get('/schedules','Assigned_RoomController@index')->name('room.schedule');
 Route::get('/schedules/{time}','Assigned_RoomController@filterClasses');
@@ -48,11 +48,19 @@ Route::post('/schedules','Assigned_RoomController@store')->name('StoreAssignedCl
 Route::resource('faculties', 'FacultyController');
 Route::resource('departments', 'DepartmentController');
 Route::get('departments/create/{id}', 'DepartmentController@create');
-Route::resource('buildings', 'BuildingController');
 Route::resource('rooms', 'RoomController');
 Route::get('rooms/create/{id}', 'RoomController@create');
 Route::resource('subjects', 'SubjectController');
 Route::resource('professors', 'ProfessorController');
+
+//Building
+Route::resource('buildings', 'BuildingController');
+//Floor
+Route::resource('floors', 'FloorController', ['except' => ['create']]);
+Route::get('building/{building_id}/floors/create', 'FloorController@create')->name('floors.create');
+//Room
+Route::resource('rooms', 'RoomController', ['except' => ['create']]);
+Route::get('floor/{floor_id}/rooms/create', 'RoomController@create')->name('rooms.create');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
