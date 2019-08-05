@@ -3,36 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Assigned_Room;
-use App\Classes;
-use App\Day;
+use App\day;
 use App\Time;
-use App\Room;
-use App\Day_Part;
-use Illuminate\Support\Facades\Validator;
-use App\TestTime;
+use App\room;
+use App\Assigned_Room;
 use App\ClassRoom;
+use Illuminate\Support\Facades\Validator;
 
-class Assigned_RoomController extends Controller
+class RoomScheduleController extends Controller
 {
-
-    /**
-     *
-     */
-    public function index(){
-        $classes = Classes::all();
-        $assigned_rooms = Assigned_Room::all();
-        $days = Day::all();
+    public function index($building_id, $room_id){
+        // dd($building_id.' '.$room_id );
+        $days = day::all();
         $times = Time::all();
-        $rooms = Room::all();
-        $day_parts = Day_Part::all();
-        $test_times = TestTime::all();
-        return view('schedule.index', compact('classes','assigned_rooms','days','times','rooms','day_parts', 'test_times'));
+        $room = room::find($room_id);
+        $assigned_rooms = Assigned_Room::all();
+        return view('rooms.schedule',compact('days', 'times', 'room', 'assigned_rooms', 'building_id'));
     }
 
-    /**
-     *
-     */
     public function filterClasses(Request $request){
 
         $selectedTime = $request->get('room_time');
@@ -50,7 +38,7 @@ class Assigned_RoomController extends Controller
         // return view('shedule.index', compact('classed'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request, $room_id, $building_id){
         // dd($request);
         $validator = Validator::make($request->all(), [
             'room_id' => 'required',
@@ -74,7 +62,6 @@ class Assigned_RoomController extends Controller
         $assigned_room->end_time = $request->end_time;
         $assigned_room->save();
 
-        return redirect('/schedules')->with('message', 'Class has been assigned Successfully!!! ');;
+        return redirect()->action('RoomScheduleController@index', ['building_id'=> $building_id,'room_id' => $room_id])->with('message', 'Class has been assigned Successfully!!! ');;
     }
-
 }

@@ -16,6 +16,7 @@ class CreateProfessorsTable extends Migration
         Schema::create('professors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('professor_name', 120);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

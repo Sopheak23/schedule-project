@@ -19,14 +19,14 @@
             @foreach($classes as $class)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$subjects[$class->subject_id-1]->subject_name}}</td>
-                <td>{{$class->total_students}}</td> 
-                 <td>{{$times[$class->start_time-1]->time}}</td>
+                <td>{{$class->subject->subject_name}}</td>
+                <td>{{$class->total_students}}</td>
+                 <td>{{$class->start_time}}</td>
                 <td><a href="{{ route('EditClassesCreate',$class->id)}}" class="btn btn-primary">Edit</a></td>
                 <td>
                     <form action="{{ route('DeleteClassesCreate', $class->id)}}" method="post">
                       @csrf
-                  <button class="btn btn-danger" type="submit" onclick="return confirm('Do you really want to delete Subject {{$subjects[$class->subject_id-1]->subject_name}}?')">Delete</button>
+                  <button class="btn btn-danger" type="submit" onclick="return confirm('Do you really want to delete Subject {{$class->subject->subject_name}} ?')">Delete</button>
                     </form>
                 </td>
             </tr>

@@ -14,58 +14,52 @@ class TimesTableSeeder extends Seeder
     public function run()
     {
         DB::table('times')->insert([
-            'time' => '7:00',
+            'time' => '07:00',
         ]);
         DB::table('times')->insert([
-            'time' => '7:30'
+            'time' => '08:00'
         ]);
         DB::table('times')->insert([
-            'time' => '8:00'
+            'time' => '09:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:00'
+            'time' => '10:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:30'
+            'time' => '11:00',
         ]);
         DB::table('times')->insert([
-            'time' => '8:00'
+            'time' => '12:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:00',
+            'time' => '13:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:30'
+            'time' => '14:00'
         ]);
         DB::table('times')->insert([
-            'time' => '8:00'
+            'time' => '15:00',
         ]);
         DB::table('times')->insert([
-            'time' => '7:00'
+            'time' => '16:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:30'
+            'time' => '17:00'
         ]);
         DB::table('times')->insert([
-            'time' => '8:00'
+            'time' => '18:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:00',
+            'time' => '19:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:30'
+            'time' => '20:00',
         ]);
         DB::table('times')->insert([
-            'time' => '8:00'
+            'time' => '21:00'
         ]);
         DB::table('times')->insert([
-            'time' => '7:00'
-        ]);
-        DB::table('times')->insert([
-            'time' => '7:30'
-        ]);
-        DB::table('times')->insert([
-            'time' => '8:00'
+            'time' => '22:00'
         ]);
     }
 }

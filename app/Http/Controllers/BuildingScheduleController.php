@@ -3,36 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Assigned_Room;
 use App\Classes;
 use App\Day;
 use App\Time;
 use App\Room;
 use App\Day_Part;
-use Illuminate\Support\Facades\Validator;
 use App\TestTime;
+use App\Assigned_Room;
 use App\ClassRoom;
+use Illuminate\Support\Facades\Validator;
+use App\Building;
 
-class Assigned_RoomController extends Controller
-{
-
-    /**
-     *
-     */
-    public function index(){
+class BuildingScheduleController extends Controller
+{ 
+    public function index($id){
+        // dd($id);
         $classes = Classes::all();
         $assigned_rooms = Assigned_Room::all();
         $days = Day::all();
         $times = Time::all();
-        $rooms = Room::all();
+        $rooms = Room::where('building_id', '=', $id)->get();
+        $building = Building::find($id);
         $day_parts = Day_Part::all();
         $test_times = TestTime::all();
-        return view('schedule.index', compact('classes','assigned_rooms','days','times','rooms','day_parts', 'test_times'));
+        return view('buildings.schedule', compact('classes','assigned_rooms','days','times','rooms','day_parts', 'test_times', 'building'));
+
     }
 
-    /**
-     *
-     */
     public function filterClasses(Request $request){
 
         $selectedTime = $request->get('room_time');
@@ -50,7 +47,7 @@ class Assigned_RoomController extends Controller
         // return view('shedule.index', compact('classed'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request, $id){
         // dd($request);
         $validator = Validator::make($request->all(), [
             'room_id' => 'required',
@@ -74,7 +71,10 @@ class Assigned_RoomController extends Controller
         $assigned_room->end_time = $request->end_time;
         $assigned_room->save();
 
-        return redirect('/schedules')->with('message', 'Class has been assigned Successfully!!! ');;
-    }
+        $willDeleteId = $request->class_id;
 
+        ClassRoom::find($willDeleteId)->delete();
+
+        return redirect()->action('BuildingScheduleController@index', ['id' => $id])->with('message', 'Class has been assigned Successfully!!! ');;
+    }
 }

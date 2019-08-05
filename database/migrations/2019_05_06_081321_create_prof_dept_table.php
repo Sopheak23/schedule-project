@@ -17,6 +17,7 @@ class CreateProfDeptTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('professor_id')->unsigned();
             $table->bigInteger('department_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('professor_id')->references('id')->on('professors')->onDelete('cascade');

@@ -27,14 +27,22 @@ Route::get('/classes', 'ClassController@index')->name("ShowAllCreateClass");
 Route::get('/classes/create', 'ClassController@create')->name("ClassesCreate");
 Route::post('/classes/store', 'ClassController@store')->name("StoreClassesCreate");
 Route::get('/classes/{id}/edit', 'ClassController@edit')->name("EditClassesCreate");
-// 1. problem for editing, due i use department in prof_dept so when id more than (6). it will response error
 Route::post('/classes/update/{id}','ClassController@update')->name("UpdateClassCreate");
 Route::post('/classes/delete/{id}','ClassController@destroy')->name("DeleteClassesCreate");
 
+// schedule for each building
+Route::get('/buildings/{id}/schedule', 'BuildingScheduleController@index')->name('building.schedule');
+Route::get('/buildings/schedule/{time}', 'BuildingScheduleController@filterClasses');
+Route::post('/buildings/schedule/{id}', 'BuildingScheduleController@store')->name('BuildingStoreAssignedClass');
+
+// schedule for each room
+Route::get('/buildings/{building_id}/room/{room_id}', 'RoomScheduleController@index')->name('ShowRoomSchedule');
+Route::get('/buildings/room/schedule/{time}', 'RoomScheduleController@filterClasses');
+Route::post('/buildings/{building_id}/room/schedule/{room_id}', 'RoomScheduleController@store')->name('RoomStoreAssignedClass');
 
 // Route for Schedule
 Route::get('/schedules','Assigned_RoomController@index')->name('room.schedule');
-Route::get('/schedules/{time}','Assigned_RoomController@create');
+Route::get('/schedules/{time}','Assigned_RoomController@filterClasses');
 Route::post('/schedules','Assigned_RoomController@store')->name('StoreAssignedClass');
 
 Route::resource('faculties', 'FacultyController');
@@ -44,7 +52,6 @@ Route::resource('rooms', 'RoomController');
 Route::get('rooms/create/{id}', 'RoomController@create');
 Route::resource('subjects', 'SubjectController');
 Route::resource('professors', 'ProfessorController');
-
 
 //Building
 Route::resource('buildings', 'BuildingController');

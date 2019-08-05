@@ -3,16 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Classes extends Model
+class ClassRoom extends Model
 {
+    use SoftDeletes;
     protected $table = 'classes';
 
     protected $fillable = [
         'subject_id',
         'prof_dept_id',
         'total_students',
-        'day',
+        'day_id',
         'start_time',
         'end_time'
     ];

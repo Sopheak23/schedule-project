@@ -18,6 +18,7 @@ class CreateTestTimesTable extends Migration
             $table->time('morning');
             $table->time('afternoon');
             $table->time('evening');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

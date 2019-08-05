@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Building; 
-use App\Room;
+use App\Building;
 
 class BuildingController extends Controller
 {
@@ -100,7 +99,7 @@ class BuildingController extends Controller
         }
 
         $building->delete();
-        
+
         return redirect('/buildings')->with('success', 'Building has been deleted Successfully');
     }
 }

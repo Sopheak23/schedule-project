@@ -5,7 +5,7 @@
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success" style="margin-bottom: 0px;">
-      {{ session()->get('success') }}  
+      {{ session()->get('success') }}
     </div><br />
   @endif
   <div>
